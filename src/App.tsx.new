@@ -1,0 +1,63 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import Shop from "./pages/Shop";
+import NearbyMap from "./pages/NearbyMap";
+import Chats from "./pages/Chats";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
+import Splash from "./pages/Splash";
+import Onboarding from "./pages/Onboarding";
+import ProfileSetup from "./pages/ProfileSetup";
+import { StrictMode, useEffect, useState } from "react";
+import { UserProvider } from "./contexts/UserContext";
+import Login from "./pages/Login";
+
+const App = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  useEffect(() => {
+    // Update date every second
+    const timer = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(timer);
+  }, []);
+
+  // Make date available globally through localStorage
+  useEffect(() => {
+    localStorage.setItem('currentSystemDate', currentDate.toISOString()); 
+  }, [currentDate]);
+
+  return (
+    <StrictMode>
+      <UserProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Splash />} />
+              <Route path="/onboarding" element={<Onboarding />} />     
+              <Route path="/profile-setup" element={<ProfileSetup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/explore" element={<Index />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/nearby" element={<NearbyMap />} />
+              <Route path="/chats" element={<Chats />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/:id" element={<Profile />} />       
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </UserProvider>
+    </StrictMode>
+  );
+};
+
+export default App;
