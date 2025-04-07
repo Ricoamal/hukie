@@ -48,6 +48,7 @@
     "firebase": "^11.6.0",
     "framer-motion": "^10.18.0",
     "input-otp": "^1.2.4",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.462.0",
     "mapbox-gl": "^3.11.0",
     "next-themes": "^0.3.0",
@@ -59,14 +60,18 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "uuid": "^11.1.0",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@tailwindcss/typography": "^0.5.15",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
     "@types/webxr": "^0.5.10",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.21",
